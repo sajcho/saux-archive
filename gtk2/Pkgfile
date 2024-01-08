@@ -1,7 +1,7 @@
 # Description:	The GTK+ Toolkit (v2)
 # URL:		http://www.gtk.org/
 # Maintainer:	sajcho, saux dot aarch64 at gmail dot com
-# Depends on:	atk cups hicolor-icon-theme gdk-pixbuf pango libxcursor libxinerama libxrandr libxcomposite
+# Depends on:	at-spi2-core hicolor-icon-theme gdk-pixbuf pango libxcursor libxinerama libxrandr libxcomposite
 
 name=gtk2
 version=2.24.33
@@ -13,7 +13,8 @@ build() {
 
 	./configure \
 		--prefix=/usr \
-		--sysconfdir=/etc
+		--sysconfdir=/etc \
+		--disable-cups
 
 	# https://bugzilla.gnome.org/show_bug.cgi?id=655517
 	sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
